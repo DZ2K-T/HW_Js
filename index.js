@@ -28,29 +28,75 @@
 // Thông báo thí sinh đậu hoặc rớt và tổng điểm đạt được.
 
 // tinh diem uu tien
-const diemKhuvuc = (khuvuc) => {
-  if (khuvuc() === "A") {
+const tinhDiemtong = (a, b, c, d, e) => {
+  const total = a + b + c + d + e;
+  return total;
+};
+
+const diemCongthemkhuvuc = (d) => {
+  const diemKhuVuc = d;
+  if (diemKhuVuc === "A") {
     return 2;
-  } else if (khuvuc() === "B") {
+  } else if (diemKhuVuc === "B") {
     return 1;
-  } else if (khuvuc() === "C") {
+  } else if (diemKhuVuc === "C") {
     return 0.5;
   } else {
     return 0;
   }
 };
-
-const diemDoituong = (doituong) => {
-  if (doituong() === "1") {
+const diemCongthemdoituong = (e) => {
+  const diemDoituong = e;
+  if (diemDoituong === 1) {
     return 2.5;
-  } else if (doituong() === "2") {
+  } else if (diemDoituong === 2) {
     return 1.5;
-  } else if (doituong() === "3") {
+  } else if (diemDoituong === 3) {
     return 1;
   } else {
     return 0;
   }
 };
+
+const ketQuathisinh = () => {
+  const diemchuan = document.getElementById("diemchuan").value * 1;
+  const diemMon1 = document.getElementById("diemMon1").value * 1;
+  const diemMon2 = document.getElementById("diemMon2").value * 1;
+  const diemMon3 = document.getElementById("diemMon3").value * 1;
+  const Khuvuc = document.getElementById("Khuvuc").value * 1;
+  const Doituong = document.getElementById("Doituong").value * 1;
+
+  const tong = tinhDiemtong(diemMon1, diemMon2, diemMon3, Khuvuc, Doituong);
+  const diemVungmien = diemCongthemkhuvuc(Khuvuc);
+  // const diemCOCC = diemCongthemdoituong(Doituong);
+  console.log(diemVungmien);
+};
+
+// const diemKhuvuc = (khuvuc) => {
+//   if (khuvuc() === "A") {
+//     return 2;
+//   } else if (khuvuc() === "B") {
+//     return 1;
+//   } else if (khuvuc() === "C") {
+//     return 0.5;
+//   } else {
+//     return 0;
+//   }
+//   console.log(`123`);
+// };
+// diemKhuvuc();
+
+// const diemDoituong = (doituong) => {
+//   if (doituong() === "1") {
+//     return 2.5;
+//   } else if (doituong() === "2") {
+//     return 1.5;
+//   } else if (doituong() === "3") {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// };
 
 // const kiemTraketqua = (diemchuan + diemMon1 + diemMon2 + diemMon3 + diemKhuvuc + diemDoituong)  => {
 //     const diemUutienkhuvuc = diemKhuvuc(khuvuc)
