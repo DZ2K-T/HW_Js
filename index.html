@@ -8,11 +8,18 @@
   <body>
     <h3>Quản lý tuyển sinh</h3>
     <form>
-      <input type="text" id="diemchuan" placeholder="Nhập điểm chuẩn" />
+      <label for="">Điểm chuẩn: 25đ</label><br>
+      <input type="hidden" id="diemchuan" placeholder="Nhập điểm chuẩn" value="25"/>
       <input type="text" id="diemMon1" placeholder="Điểm môn 1" />
       <input type="text" id="diemMon2" placeholder="Điểm môn 2" />
       <input type="text" id="diemMon3" placeholder="Điểm môn 3" />
-      <input type="text" id="Khuvuc" placeholder="Khu vực" />
+      <!-- <input type="text" id="Khuvuc" placeholder="Khu vực" /> -->
+      <select name="Khuvuc" id="Khuvuc">
+        <option value="">Khu vực X</option>
+        <option value="A">Khu vực A (+2đ)</option>
+        <option value="B">Khu vực B</option>
+        <option value="C">Khu vực C</option>
+      </select>
       <input type="text" id="Doituong" placeholder="Đối tượng" />
       <button type="button" onclick="ketQuathisinh()">Kết quả</button>
       <p id="pThongBaoKetqua"></p>

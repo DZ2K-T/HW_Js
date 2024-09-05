@@ -28,22 +28,38 @@
 // Thông báo thí sinh đậu hoặc rớt và tổng điểm đạt được.
 
 // tinh diem uu tien
-const tinhDiemtong = (a, b, c, d, e) => {
-  const total = a + b + c + d + e;
+const tinhChuVi = (a, b) => {
+  const total = (a + b) / 2;
   return total;
 };
 
-const diemCongthemkhuvuc = (d) => {
-  const diemKhuVuc = d;
-  if (diemKhuVuc === "A") {
+const DiemTong = 0;
+const diemCongthemkhuvuc = (Khuvuc) => {
+  if (Khuvuc === "A") {
     return 2;
-  } else if (diemKhuVuc === "B") {
+  } else if (Khuvuc === "B") {
     return 1;
-  } else if (diemKhuVuc === "C") {
+  } else if (Khuvuc === "C") {
     return 0.5;
   } else {
     return 0;
   }
+  // let diem = 0;
+  // switch (Khuvuc) {
+  //   case "A":
+  //     diem = 2;
+  //     break;
+  //   case "B":
+  //     diem = 1;
+  //     break;
+  //   case "C":
+  //     diem = 0.5;
+  //     break;
+  //   default:
+  //     diem = 0;
+  //     break;
+  // }
+  // return diem;
 };
 const diemCongthemdoituong = (e) => {
   const diemDoituong = e;
@@ -63,13 +79,14 @@ const ketQuathisinh = () => {
   const diemMon1 = document.getElementById("diemMon1").value * 1;
   const diemMon2 = document.getElementById("diemMon2").value * 1;
   const diemMon3 = document.getElementById("diemMon3").value * 1;
-  const Khuvuc = document.getElementById("Khuvuc").value * 1;
+  const Khuvuc = document.getElementById("Khuvuc").value;
   const Doituong = document.getElementById("Doituong").value * 1;
 
-  const tong = tinhDiemtong(diemMon1, diemMon2, diemMon3, Khuvuc, Doituong);
   const diemVungmien = diemCongthemkhuvuc(Khuvuc);
+  const diemDoituong = diemCongthemdoituong(Doituong);
+  const tong = diemMon1 + diemMon2 + diemMon3 + diemVungmien + diemDoituong;
+  console.log(diemchuan);
   // const diemCOCC = diemCongthemdoituong(Doituong);
-  console.log(diemVungmien);
 };
 
 // const diemKhuvuc = (khuvuc) => {
