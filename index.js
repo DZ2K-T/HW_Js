@@ -77,3 +77,32 @@ const ketQuathisinh = () => {
 };
 //
 
+/**
+ * tinh va xua tien tra theo qui tac:
+ *
+ * 50kw dau : 500d/kw
+ * 50kw ke : 650d/kw
+ * 100kw ke : 850d/kw
+ * 150kw ke : 1100/kw
+ * con lai : 1300kw
+ */
+
+const tiendiensudung = () => {
+  const khachhang = document.getElementById("khachhang").value;
+  const soKw = document.getElementById("soKw").value * 1;
+  let tongtien = 0;
+  if (soKw <= 50) {
+    tongtien = soKw * 500;
+  } else if (soKw <= 100) {
+    tongtien = soKw * 500 + (soKw - 50) * 650;
+  } else if (soKw <= 200) {
+    tongtien = 50 * 500 + 50 * 650 + (soKw - 100) * 850;
+  } else if (soKw <= 350) {
+    tongtien = 50 * 500 + 50 * 650 + 100 * 850 + (soKw - 150) * 1100;
+  } else {
+    tongtien =
+      50 * 500 + 50 * 650 + 100 * 850 + 150 * 1000 + (soKw - 350) * 1300;
+  }
+  const pThongBaoTienDien = document.getElementById("pThongBaoTienDien");
+  pThongBaoTienDien.innerHTML = `thong tin tra cuu: ${khachhang} tien dien thanh toan la: ${tongtien} dong`;
+};
