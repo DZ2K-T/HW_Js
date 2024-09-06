@@ -104,5 +104,143 @@ const tiendiensudung = () => {
       50 * 500 + 50 * 650 + 100 * 850 + 150 * 1000 + (soKw - 350) * 1300;
   }
   const pThongBaoTienDien = document.getElementById("pThongBaoTienDien");
-  pThongBaoTienDien.innerHTML = `thong tin tra cuu: ${khachhang} tien dien thanh toan la: ${tongtien} dong`;
+  pThongBaoTienDien.innerHTML = `Họ tên: ${khachhang} <br>
+  Tiền điện: ${tongtien} đồng`;
 };
+//
+
+/**
+ * dau vao
+ * Người dùng nhập họ tên, tổng thu nhập năm (triệu đồng), và số người phụ thuộc.
+ *
+ * xu ly
+ *
+ * -Lấy giá trị của các trường nhập liệu.
+ * Tính thu nhập chịu thuế theo công thức
+ * thu nhập chịu thuế = tổng thu nhập - 4tr -(số người phụ thuộc * 1.6tr)
+ *
+ * đầu ra
+ * Sau khi tính toán, kết quả sẽ được hiển thị phía dưới form, bao gồm họ tên, thu nhập chịu thuế, và số tiền thuế phải nộp.
+ */
+// const thuNhapchiuthue = () => {
+//   const total = thuNhap - 4 - soNguoiphuthuoc * 1.6;
+//   return total;
+// };
+
+const tinhThuethunhap = () => {
+  const hoten = document.getElementById("hoten").value;
+  const thuNhap = document.getElementById("thunhap").value * 1;
+  const soNguoiphuthuoc = document.getElementById("soNguoiphuthuoc").value * 1;
+
+  let thuNhapchiuthue = thuNhap - 4 - soNguoiphuthuoc * 1.6;
+  if (thuNhapchiuthue < 0) {
+    thuNhapchiuthue = 0;
+  }
+
+  let thueSuat = 0;
+  if (thuNhapchiuthue <= 60) {
+    thueSuat = 5;
+  } else if (thuNhapchiuthue <= 120) {
+    thueSuat = 10;
+  } else if (thuNhapchiuthue <= 210) {
+    thueSuat = 15;
+  } else if (thuNhapchiuthue <= 384) {
+    thueSuat = 20;
+  } else if (thuNhapchiuthue <= 624) {
+    thueSuat = 25;
+  } else if (thuNhapchiuthue <= 960) {
+    thueSuat = 30;
+  } else {
+    thueSuat = 35;
+  }
+
+  const thuePhainop = (thuNhapchiuthue * thueSuat) / 100;
+  const pThongbaotienthue = document.getElementById("pThongbaotienthue");
+  pThongbaotienthue.innerHTML = `Họ tên: ${hoten} <br> 
+  Thu nhập chịu thuế: ${thuNhapchiuthue}(triệu đồng) <br>
+  Thuế suất: ${thueSuat}% <br> 
+  Số tiền thuế phải nộp: ${thuePhainop}(triệu đồng)`;
+};
+
+/**
+ * đầu vào 
+ * Người dùng nhập mã khách hàng, loại khách hàng (nhà dân hoặc doanh nghiệp), số kênh cao cấp, và số kết nối (chỉ cho doanh nghiệp).
+Khi chọn loại khách hàng là Doanh nghiệp, trường nhập số kết nối sẽ hiển thị. Nếu chọn Nhà dân, trường này sẽ ẩn đi.
+
+xử lý 
+
+Lấy giá trị của các trường nhập liệu.
+Tính toán phí xử lý hóa đơn, phí dịch vụ cơ bản, và thuế kênh cao cấp dựa trên loại khách hàng và số liệu được nhập.
+Tính tổng số tiền hóa đơn.
+Nhà dân:
+
+Phí xử lý hóa đơn: 4.5$
+Phí dịch vụ cơ bản: 20.5$
+Thuế kênh cao cấp: 7.5$ / kênh
+
+Doanh nghiệp:
+
+Phí xử lý hóa đơn: 15$
+Phí dịch vụ cơ bản: 75$ cho 10 kết nối đầu, mỗi kết nối thêm 5$/kết nối
+Thuế kênh cao cấp: 50$ / kênh
+
+đầu ra 
+-Người dùng nhập mã khách hàng, chọn loại khách hàng (nhà dân hoặc doanh nghiệp).
+-Nhập số kênh cao cấp và số kết nối (nếu là doanh nghiệp).
+-Nhấn nút Tính Hóa Đơn để xem kết quả.
+*/
+// const form_tien_cap = document.getElementById('tien-cap');
+const onchange_loaikhachhang = (t) => {
+  const loaikhachhang = t.value;
+  const soketnoi = document.getElementById("soketnoi");
+  if (loaikhachhang == "danthuong") {
+    soketnoi.style.display = 'none';
+  } else if (loaikhachhang == "doanhnghiep") {
+    soketnoi.style.display = 'block';
+  }
+};
+
+const tinhThueCap = () => {
+  const makhachhang = document.getElementById("makhachhang").value;
+  const loaikhachhang = document.getElementById("loaikhachhang").value;
+  const soketnoi = document.getElementById("soketnoi").value * 1;
+  const sokenhcaocap = document.getElementById("sokenhcaocap").value * 1;
+  var tong_tien = 0;
+  if (loaikhachhang == "danthuong") {
+    tong_tien = 4.5 + 20.5 + (7.5 * sokenhcaocap);
+  } else if (loaikhachhang == "doanhnghiep") {
+    if (soketnoi <= 10) {
+      tong_tien = 15 + (soketnoi * 7.5) + (50 * sokenhcaocap);
+    } else {
+      tong_tien = 15 + (75 + ((soketnoi - 10) * 5)) + (50 * sokenhcaocap);
+    }
+  }
+  document.getElementById("pThongbaotiencap").innerHTML = tong_tien;
+};
+
+// const form_tien_cap = jQuery('form#tien-cap');
+// const tinhThueCap = () => {
+//   var makhachhang = form_tien_cap.find('[name="makhachhang"]').val();
+//   var loaikhachhang = form_tien_cap.find('[name="loaikhachhang"]').val();
+//   var soketnoi = form_tien_cap.find('[name="soketnoi"]').val() * 1;
+//   var sokenhcaocap = form_tien_cap.find('[name="sokenhcaocap"]').val() * 1;
+//   var tong_tien = 0;
+//   if (loaikhachhang == '') {
+//     console.log('Dell tinh nua');
+//   }
+//   else if (loaikhachhang == 'danthuong') {
+//     soketnoi = 1;
+//     tong_tien = 4.5 + (soketnoi * 20.5) + (7.5 * sokenhcaocap);
+//   }
+//   else {
+//     var tien_ket_noi = 0;
+//     if (soketnoi <= 10) {
+//       tien_ket_noi = soketnoi * 7.5;
+//     } else {
+//       tien_ket_noi = 75 + ((soketnoi - 10) * 5);
+//     }
+//     tong_tien = 15 + tien_ket_noi + (50 * sokenhcaocap);
+//   }
+//   jQuery("#pThongbaotiencap").text(tong_tien);
+//   jQuery("#pThongbaotiencap").css('color', 'red');
+// }

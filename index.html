@@ -1,53 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h3>Quản lý tuyển sinh</h3>
-    <form>
-      <label for="">Điểm chuẩn: 25đ</label><br />
-      <input
-        type="hidden"
-        id="diemchuan"
-        placeholder="Nhập điểm chuẩn"
-        value="25"
-      />
-      <input type="text" id="diemMon1" placeholder="Điểm môn 1" />
-      <input type="text" id="diemMon2" placeholder="Điểm môn 2" />
-      <input type="text" id="diemMon3" placeholder="Điểm môn 3" />
 
-      <select name="Khuvuc" id="Khuvuc">
-        <option value="">Khu vực X (+0)</option>
-        <option value="A">Khu vực A (+2đ)</option>
-        <option value="B">Khu vực B (+1)</option>
-        <option value="C">Khu vực C (+0.5)</option>
-      </select>
-      <!-- <input type="text" id="Doituong" placeholder="Đối tượng" /> -->
-      <select name="Doituong" id="Doituong">
-        <option value="">Đối tượng 0 (+0)</option>
-        <option value="1">Đối tượng 1 (+2.5đ)</option>
-        <option value="2">Đối tượng 2 (+ 1.5đ)</option>
-        <option value="3">Đối tượng 3 (+ 1đ)</option>
-      </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-      <button type="button" onclick="ketQuathisinh()">Kết quả</button>
-      <p id="pThongBaoKetqua"></p>
-    </form>
+<body>
+  <h3>Quản lý tuyển sinh</h3>
+  <form>
+    <label for="">Điểm chuẩn: 25đ</label><br />
+    <input type="hidden" id="diemchuan" placeholder="Nhập điểm chuẩn" value="25" />
+    <input type="text" id="diemMon1" placeholder="Điểm môn 1" />
+    <input type="text" id="diemMon2" placeholder="Điểm môn 2" />
+    <input type="text" id="diemMon3" placeholder="Điểm môn 3" />
 
-    <hr />
+    <select name="Khuvuc" id="Khuvuc">
+      <option value="">Khu vực X (+0)</option>
+      <option value="A">Khu vực A (+2đ)</option>
+      <option value="B">Khu vực B (+1)</option>
+      <option value="C">Khu vực C (+0.5)</option>
+    </select>
+    <!-- <input type="text" id="Doituong" placeholder="Đối tượng" /> -->
+    <select name="Doituong" id="Doituong">
+      <option value="">Đối tượng 0 (+0)</option>
+      <option value="1">Đối tượng 1 (+2.5đ)</option>
+      <option value="2">Đối tượng 2 (+ 1.5đ)</option>
+      <option value="3">Đối tượng 3 (+ 1đ)</option>
+    </select>
 
+    <button type="button" onclick="ketQuathisinh()">Kết quả</button>
+    <p id="pThongBaoKetqua"></p>
+  </form>
 
-    <h3>Thông tin tiêu thụ điện</h3>
-    <form>
-      <input type="text" id="khachhang" placeholder="Tên khách hàng" />
-      <input type="text" id="soKw" placeholder="nhập số kw điện" />
-      <button type="button" onclick="tiendiensudung()">Tra cứu</button>
-      <p id="pThongBaoTienDien"></p>
-    </form>
+  <hr />
 
-    <script src="./index.js"></script>
-  </body>
+  <h3>Thông tin tiêu thụ điện</h3>
+  <form>
+    <input type="text" id="khachhang" placeholder="Tên khách hàng" />
+    <input type="text" id="soKw" placeholder="nhập số kw điện" />
+    <button type="button" onclick="tiendiensudung()">Tra cứu</button>
+    <p id="pThongBaoTienDien"></p>
+  </form>
+
+  <hr />
+  <h3>Thuế thu nhập cá nhân</h3>
+  <form>
+    <input type="text" id="hoten" placeholder="Họ và tên" />
+    <input type="text" id="thunhap" placeholder="Tổng thu nhập năm" />
+    <input type="text" id="soNguoiphuthuoc" placeholder="số người phụ thuộc" />
+    <button type="button" onclick="tinhThuethunhap()">Tính thuế</button>
+    <p id="pThongbaotienthue"></p>
+  </form>
+
+  <hr />
+  <h3>Tính tiền cáp</h3>
+  <form id="tien-cap">
+
+    <input type="text" placeholder="Nhập mã khách hàng" name="makhachhang" id="makhachhang" value="KH001" />
+    <select id="loaikhachhang" name="loaikhachhang" onchange="onchange_loaikhachhang(this)">
+      <option value="" selected>Chọn loại khách</option>
+      <option value="danthuong">Dân thường</option>
+      <option value="doanhnghiep">Doanh nghiệp</option>
+    </select>
+    <input type="number" placeholder="Nhập vào số kết nối" id="soketnoi" name="soketnoi" />
+    <input type="number" placeholder="Nhập vào số kênh cao cấp" name="sokenhcaocap" id="sokenhcaocap" />
+    <button type="button" onclick="tinhThueCap()">Tính tiền</button>
+    <p id="pThongbaotiencap"></p>
+  </form>
+  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <script src="./index.js"></script>
+</body>
+
 </html>
