@@ -8,22 +8,38 @@
   <body>
     <h3>Quản lý tuyển sinh</h3>
     <form>
-      <label for="">Điểm chuẩn: 25đ</label><br>
-      <input type="hidden" id="diemchuan" placeholder="Nhập điểm chuẩn" value="25"/>
+      <label for="">Điểm chuẩn: 25đ</label><br />
+      <input
+        type="hidden"
+        id="diemchuan"
+        placeholder="Nhập điểm chuẩn"
+        value="25"
+      />
       <input type="text" id="diemMon1" placeholder="Điểm môn 1" />
       <input type="text" id="diemMon2" placeholder="Điểm môn 2" />
       <input type="text" id="diemMon3" placeholder="Điểm môn 3" />
-      <!-- <input type="text" id="Khuvuc" placeholder="Khu vực" /> -->
+
       <select name="Khuvuc" id="Khuvuc">
-        <option value="">Khu vực X</option>
+        <option value="">Khu vực X (+0)</option>
         <option value="A">Khu vực A (+2đ)</option>
-        <option value="B">Khu vực B</option>
-        <option value="C">Khu vực C</option>
+        <option value="B">Khu vực B (+1)</option>
+        <option value="C">Khu vực C (+0.5)</option>
       </select>
-      <input type="text" id="Doituong" placeholder="Đối tượng" />
+      <!-- <input type="text" id="Doituong" placeholder="Đối tượng" /> -->
+      <select name="Doituong" id="Doituong">
+        <option value="">Đối tượng 0 (+0)</option>
+        <option value="1">Đối tượng 1 (+2.5đ)</option>
+        <option value="2">Đối tượng 2 (+ 1.5đ)</option>
+        <option value="3">Đối tượng 3 (+ 1đ)</option>
+      </select>
+
       <button type="button" onclick="ketQuathisinh()">Kết quả</button>
       <p id="pThongBaoKetqua"></p>
     </form>
+
+    <hr>
+    
+  
 
     <script src="./index.js"></script>
   </body>

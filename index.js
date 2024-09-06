@@ -27,14 +27,12 @@
 
 // Thông báo thí sinh đậu hoặc rớt và tổng điểm đạt được.
 
-// tinh diem uu tien
-const tinhChuVi = (a, b) => {
-  const total = (a + b) / 2;
+const tinhDiemtong = (a, b, c, diemKhuvuc, diemDoituong) => {
+  const total = a + b + c + diemKhuvuc + diemDoituong;
   return total;
 };
 
-const DiemTong = 0;
-const diemCongthemkhuvuc = (Khuvuc) => {
+const diemKhuvuc = (Khuvuc) => {
   if (Khuvuc === "A") {
     return 2;
   } else if (Khuvuc === "B") {
@@ -44,30 +42,14 @@ const diemCongthemkhuvuc = (Khuvuc) => {
   } else {
     return 0;
   }
-  // let diem = 0;
-  // switch (Khuvuc) {
-  //   case "A":
-  //     diem = 2;
-  //     break;
-  //   case "B":
-  //     diem = 1;
-  //     break;
-  //   case "C":
-  //     diem = 0.5;
-  //     break;
-  //   default:
-  //     diem = 0;
-  //     break;
-  // }
-  // return diem;
 };
-const diemCongthemdoituong = (e) => {
-  const diemDoituong = e;
-  if (diemDoituong === 1) {
+
+const diemDoituong = (Doituong) => {
+  if (Doituong === 1) {
     return 2.5;
-  } else if (diemDoituong === 2) {
+  } else if (Doituong === 2) {
     return 1.5;
-  } else if (diemDoituong === 3) {
+  } else if (Doituong === 3) {
     return 1;
   } else {
     return 0;
@@ -82,40 +64,16 @@ const ketQuathisinh = () => {
   const Khuvuc = document.getElementById("Khuvuc").value;
   const Doituong = document.getElementById("Doituong").value * 1;
 
-  const diemVungmien = diemCongthemkhuvuc(Khuvuc);
-  const diemDoituong = diemCongthemdoituong(Doituong);
-  const tong = diemMon1 + diemMon2 + diemMon3 + diemVungmien + diemDoituong;
-  console.log(diemchuan);
-  // const diemCOCC = diemCongthemdoituong(Doituong);
+  const diemKV = diemKhuvuc(Khuvuc);
+  const diemDT = diemDoituong(Doituong);
+  const tong = tinhDiemtong(diemMon1, diemMon2, diemMon3, diemKV, diemDT);
+  if (tong >= diemchuan && diemMon1 > 0 && diemMon2 > 0 && diemMon3 > 0) {
+    ketqua = `DAU`;
+  } else {
+    ketqua = `ROT`;
+  }
+  const pThongBaoKetqua = document.getElementById("pThongBaoKetqua");
+  pThongBaoKetqua.innerHTML = `ket qua thi sinh: ${ketqua} tong diem la: ${tong}`;
 };
+//
 
-// const diemKhuvuc = (khuvuc) => {
-//   if (khuvuc() === "A") {
-//     return 2;
-//   } else if (khuvuc() === "B") {
-//     return 1;
-//   } else if (khuvuc() === "C") {
-//     return 0.5;
-//   } else {
-//     return 0;
-//   }
-//   console.log(`123`);
-// };
-// diemKhuvuc();
-
-// const diemDoituong = (doituong) => {
-//   if (doituong() === "1") {
-//     return 2.5;
-//   } else if (doituong() === "2") {
-//     return 1.5;
-//   } else if (doituong() === "3") {
-//     return 1;
-//   } else {
-//     return 0;
-//   }
-// };
-
-// const kiemTraketqua = (diemchuan + diemMon1 + diemMon2 + diemMon3 + diemKhuvuc + diemDoituong)  => {
-//     const diemUutienkhuvuc = diemKhuvuc(khuvuc)
-
-// }
