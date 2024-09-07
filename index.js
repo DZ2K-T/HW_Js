@@ -215,32 +215,6 @@ const tinhThueCap = () => {
       tong_tien = 15 + (75 + ((soketnoi - 10) * 5)) + (50 * sokenhcaocap);
     }
   }
-  document.getElementById("pThongbaotiencap").innerHTML = tong_tien;
+  document.getElementById("pThongbaotiencap").innerHTML = `Hóa đơn của KH ${makhachhang} là:  ${tong_tien}$`;
 };
 
-// const form_tien_cap = jQuery('form#tien-cap');
-// const tinhThueCap = () => {
-//   var makhachhang = form_tien_cap.find('[name="makhachhang"]').val();
-//   var loaikhachhang = form_tien_cap.find('[name="loaikhachhang"]').val();
-//   var soketnoi = form_tien_cap.find('[name="soketnoi"]').val() * 1;
-//   var sokenhcaocap = form_tien_cap.find('[name="sokenhcaocap"]').val() * 1;
-//   var tong_tien = 0;
-//   if (loaikhachhang == '') {
-//     console.log('Dell tinh nua');
-//   }
-//   else if (loaikhachhang == 'danthuong') {
-//     soketnoi = 1;
-//     tong_tien = 4.5 + (soketnoi * 20.5) + (7.5 * sokenhcaocap);
-//   }
-//   else {
-//     var tien_ket_noi = 0;
-//     if (soketnoi <= 10) {
-//       tien_ket_noi = soketnoi * 7.5;
-//     } else {
-//       tien_ket_noi = 75 + ((soketnoi - 10) * 5);
-//     }
-//     tong_tien = 15 + tien_ket_noi + (50 * sokenhcaocap);
-//   }
-//   jQuery("#pThongbaotiencap").text(tong_tien);
-//   jQuery("#pThongbaotiencap").css('color', 'red');
-// }

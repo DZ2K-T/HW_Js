@@ -10,8 +10,8 @@
 <body>
   <h3>Quản lý tuyển sinh</h3>
   <form>
-    <label for="">Điểm chuẩn: 25đ</label><br />
-    <input type="hidden" id="diemchuan" placeholder="Nhập điểm chuẩn" value="25" />
+    <label for="">Điểm chuẩn: 20đ</label><br />
+    <input type="hidden" id="diemchuan" placeholder="Nhập điểm chuẩn" value="20" />
     <input type="text" id="diemMon1" placeholder="Điểm môn 1" />
     <input type="text" id="diemMon2" placeholder="Điểm môn 2" />
     <input type="text" id="diemMon3" placeholder="Điểm môn 3" />
@@ -58,10 +58,10 @@
   <h3>Tính tiền cáp</h3>
   <form id="tien-cap">
 
-    <input type="text" placeholder="Nhập mã khách hàng" name="makhachhang" id="makhachhang" value="KH001" />
+    <input type="text" placeholder="Nhập mã khách hàng" name="makhachhang" id="makhachhang" />
     <select id="loaikhachhang" name="loaikhachhang" onchange="onchange_loaikhachhang(this)">
       <option value="" selected>Chọn loại khách</option>
-      <option value="danthuong">Dân thường</option>
+      <option value="danthuong">Nhà dân</option>
       <option value="doanhnghiep">Doanh nghiệp</option>
     </select>
     <input type="number" placeholder="Nhập vào số kết nối" id="soketnoi" name="soketnoi" />
@@ -69,7 +69,9 @@
     <button type="button" onclick="tinhThueCap()">Tính tiền</button>
     <p id="pThongbaotiencap"></p>
   </form>
-  
+
+
+
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="./index.js"></script>
 </body>
