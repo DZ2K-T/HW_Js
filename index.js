@@ -1,32 +1,5 @@
-// / Nhập dữ liệu đầu vào:
 
-// Điểm chuẩn (diemChuan).
-// Điểm của 3 môn thi (diemMon1, diemMon2, diemMon3).
-// Khu vực của thí sinh (khuVuc).
-// Đối tượng của thí sinh (doiTuong).
-// Xác định điểm ưu tiên:
-
-// Điểm ưu tiên theo khu vực:
-// Khu vực A: 2 điểm.
-// Khu vực B: 1 điểm.
-// Khu vực C: 0.5 điểm.
-// Khu vực X (không thuộc khu vực ưu tiên): 0 điểm.
-// Điểm ưu tiên theo đối tượng:
-// Đối tượng 1: 2.5 điểm.
-// Đối tượng 2: 1.5 điểm.
-// Đối tượng 3: 1 điểm.
-// Đối tượng 0 (không thuộc đối tượng ưu tiên): 0 điểm.
-// Tính tổng điểm:
-
-// Tổng điểm = điểm 3 môn thi + điểm ưu tiên khu vực + điểm ưu tiên đối tượng.
-// Kiểm tra điều kiện đậu/rớt:
-
-// Thí sinh đậu nếu tổng điểm >= điểm chuẩn và không có môn nào bị 0 điểm.
-
-// Xuất kết quả:
-
-// Thông báo thí sinh đậu hoặc rớt và tổng điểm đạt được.
-
+// <!-- Quản lý tuyển sinh -->
 const tinhDiemtong = (a, b, c, diemKhuvuc, diemDoituong) => {
   const total = a + b + c + diemKhuvuc + diemDoituong;
   return total;
@@ -75,17 +48,9 @@ const ketQuathisinh = () => {
   const pThongBaoKetqua = document.getElementById("pThongBaoKetqua");
   pThongBaoKetqua.innerHTML = `ket qua thi sinh: ${ketqua} tong diem la: ${tong}`;
 };
-//
+///////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * tinh va xua tien tra theo qui tac:
- *
- * 50kw dau : 500d/kw
- * 50kw ke : 650d/kw
- * 100kw ke : 850d/kw
- * 150kw ke : 1100/kw
- * con lai : 1300kw
- */
+// Thông tin tiêu thụ điện
 
 const tiendiensudung = () => {
   const khachhang = document.getElementById("khachhang").value;
@@ -107,25 +72,11 @@ const tiendiensudung = () => {
   pThongBaoTienDien.innerHTML = `Họ tên: ${khachhang} <br>
   Tiền điện: ${tongtien} đồng`;
 };
-//
 
-/**
- * dau vao
- * Người dùng nhập họ tên, tổng thu nhập năm (triệu đồng), và số người phụ thuộc.
- *
- * xu ly
- *
- * -Lấy giá trị của các trường nhập liệu.
- * Tính thu nhập chịu thuế theo công thức
- * thu nhập chịu thuế = tổng thu nhập - 4tr -(số người phụ thuộc * 1.6tr)
- *
- * đầu ra
- * Sau khi tính toán, kết quả sẽ được hiển thị phía dưới form, bao gồm họ tên, thu nhập chịu thuế, và số tiền thuế phải nộp.
- */
-// const thuNhapchiuthue = () => {
-//   const total = thuNhap - 4 - soNguoiphuthuoc * 1.6;
-//   return total;
-// };
+/////////////////////////////////////////////////////////////////////////////////
+
+// Thuế thu nhập cá nhân
+
 
 const tinhThuethunhap = () => {
   const hoten = document.getElementById("hoten").value;
@@ -161,35 +112,11 @@ const tinhThuethunhap = () => {
   Thuế suất: ${thueSuat}% <br> 
   Số tiền thuế phải nộp: ${thuePhainop}(triệu đồng)`;
 };
+// /////////////////////////////////////////////////////////////////////
 
-/**
- * đầu vào 
- * Người dùng nhập mã khách hàng, loại khách hàng (nhà dân hoặc doanh nghiệp), số kênh cao cấp, và số kết nối (chỉ cho doanh nghiệp).
-Khi chọn loại khách hàng là Doanh nghiệp, trường nhập số kết nối sẽ hiển thị. Nếu chọn Nhà dân, trường này sẽ ẩn đi.
 
-xử lý 
+//   <!-- Tính tiền cáp -->
 
-Lấy giá trị của các trường nhập liệu.
-Tính toán phí xử lý hóa đơn, phí dịch vụ cơ bản, và thuế kênh cao cấp dựa trên loại khách hàng và số liệu được nhập.
-Tính tổng số tiền hóa đơn.
-Nhà dân:
-
-Phí xử lý hóa đơn: 4.5$
-Phí dịch vụ cơ bản: 20.5$
-Thuế kênh cao cấp: 7.5$ / kênh
-
-Doanh nghiệp:
-
-Phí xử lý hóa đơn: 15$
-Phí dịch vụ cơ bản: 75$ cho 10 kết nối đầu, mỗi kết nối thêm 5$/kết nối
-Thuế kênh cao cấp: 50$ / kênh
-
-đầu ra 
--Người dùng nhập mã khách hàng, chọn loại khách hàng (nhà dân hoặc doanh nghiệp).
--Nhập số kênh cao cấp và số kết nối (nếu là doanh nghiệp).
--Nhấn nút Tính Hóa Đơn để xem kết quả.
-*/
-// const form_tien_cap = document.getElementById('tien-cap');
 const onchange_loaikhachhang = (t) => {
   const loaikhachhang = t.value;
   const soketnoi = document.getElementById("soketnoi");
